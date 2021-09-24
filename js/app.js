@@ -1,8 +1,8 @@
 import '../scss/app.scss';
-import * as THREE from 'three';
+import * as THREE from './node_modules/three/build/three.module.js';
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 //Animate On Scroll
-import AOS from 'aos';
+import AOS from './node_modules/aos/src/js/aos.js';
 import 'aos/dist/aos.css';
 // AOS
 
