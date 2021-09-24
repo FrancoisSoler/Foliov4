@@ -2,10 +2,20 @@ import '../scss/app.scss';
 import * as THREE from 'three';
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 //Animate On Scroll
-import * as AOS from 'aos/dist/aos.js';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+// AOS
 
-
-
+window.addEventListener("DOMContentLoaded", (event) => {
+  console.log("it worked")
+  AOS.init({
+    easing: 'ease-in-sine',
+    delay: 50,
+    once: true,
+/*     anchorPlacement: 'top-center',
+ */
+  })
+});
 // Setup
 
 const scene = new THREE.Scene();
@@ -114,12 +124,12 @@ Array(200).fill().forEach(addStar);
 
 // Background
 
-const spaceTexture = new THREE.TextureLoader().load('../images/content/space.jpg');
+const spaceTexture = new THREE.TextureLoader().load('./images/space.jpg');
 scene.background = spaceTexture;
 
 // Avatar
 
-const jeffTexture = new THREE.TextureLoader().load('./images/content/jeff.png');
+const jeffTexture = new THREE.TextureLoader().load('./images/jeff.png');
 
 const jeff = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 2), new THREE.MeshBasicMaterial({ map: jeffTexture }));
 
@@ -127,8 +137,8 @@ scene.add(jeff);
 
 // Moon
 
-const moonTexture = new THREE.TextureLoader().load('./images/content/moon.jpg');
-const normalTexture = new THREE.TextureLoader().load('./images/content/normal.jpg');
+const moonTexture = new THREE.TextureLoader().load('./images/moon.jpg');
+const normalTexture = new THREE.TextureLoader().load('./images/normal.jpg');
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
@@ -182,14 +192,3 @@ function animate() {
 }
 
 animate();
-
-
-// AOS
-
-
-AOS.init({
-  easing: 'ease-in-sine',
-  delay: 50,
-  once: true,
-  anchorPlacement: 'top-center'
-});
