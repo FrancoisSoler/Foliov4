@@ -1,12 +1,12 @@
 import '../scss/app.scss';
-import * as THREE from '/build/three.module.js';
+import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 //Animate On Scroll
 import AOS from './aos';
 import 'aos/dist/aos.css';
 // AOS
 
-
+//im getting crazyyyyy
 window.addEventListener("DOMContentLoaded", (event) => {
   console.log("it worked")
   AOS.init({
