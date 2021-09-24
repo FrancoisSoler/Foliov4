@@ -6,6 +6,7 @@ import AOS from './aos';
 import 'aos/dist/aos.css';
 // AOS
 
+
 window.addEventListener("DOMContentLoaded", (event) => {
   console.log("it worked")
   AOS.init({
