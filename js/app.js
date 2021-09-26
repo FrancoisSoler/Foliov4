@@ -2,21 +2,18 @@ import '../scss/app.scss';
 import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 //Animate On Scroll
-import AOS from './aos';
-import 'aos/dist/aos.css';
+import AOS from 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js';
+import 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css';
 // AOS
-
-//im getting crazyyyyy
 window.addEventListener("DOMContentLoaded", (event) => {
   console.log("it worked")
   AOS.init({
     easing: 'ease-in-sine',
     delay: 50,
     once: true,
-/*     anchorPlacement: 'top-center',
- */
+
   })
-});
+}); 
 // Setup
 
 const scene = new THREE.Scene();
@@ -130,11 +127,11 @@ scene.background = spaceTexture;
 
 // Avatar
 
-const jeffTexture = new THREE.TextureLoader().load('./images/jeff.png');
+const cubeTexture = new THREE.TextureLoader().load('./images/selfie.jpg');
 
-const jeff = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 2), new THREE.MeshBasicMaterial({ map: jeffTexture }));
+const cube = new THREE.Mesh(new THREE.BoxGeometry(2, 2, 2), new THREE.MeshBasicMaterial({ map: cubeTexture }));
 
-scene.add(jeff);
+scene.add(cube);
 
 // Moon
 
@@ -151,11 +148,12 @@ const moon = new THREE.Mesh(
 
 scene.add(moon);
 
-moon.position.z = 46;
+moon.position.z = 48;
 moon.position.setX(-10);
 
-jeff.position.z = -5;
-jeff.position.x = 3;
+cube.position.z = -6;
+cube.position.x = 3;
+cube.position.y = 0;
 
 // Scroll Animation
 
@@ -165,8 +163,8 @@ function moveCamera() {
   moon.rotation.y += 0.075;
   moon.rotation.z += 0.05;
 
-  jeff.rotation.y += 0.01;
-  jeff.rotation.z += 0.01;
+  cube.rotation.y += 0.01;
+  cube.rotation.z += 0.01;
 
   camera.position.z = t * -0.01;
   camera.position.x = t * -0.0002;
@@ -185,7 +183,7 @@ function animate() {
   torus.rotation.y += 0.001;
   torus.rotation.z += 0.01;
 
-  moon.rotation.x += 0.005;
+  moon.rotation.y += 0.005;
 
   // controls.update();
 
