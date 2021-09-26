@@ -2,8 +2,8 @@ import '../scss/app.scss';
 import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 //Animate On Scroll
-import AOS from 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js';
-import 'https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 // AOS
 window.addEventListener("DOMContentLoaded", (event) => {
   console.log("it worked")
@@ -183,7 +183,7 @@ function animate() {
   torus.rotation.y += 0.001;
   torus.rotation.z += 0.01;
 
-  moon.rotation.y += 0.005;
+  moon.rotation.z += 0.005;
 
   // controls.update();
 
