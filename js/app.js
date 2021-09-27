@@ -13,7 +13,18 @@ window.addEventListener("DOMContentLoaded", (event) => {
     once: true,
 
   })
-}); 
+  
+});
+// display message on mobile
+window.onload=function(){
+  var mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+  if (mobile) {
+      alert("Désolé, ce site n'est pas encore fonctionel sur téléphone");              
+  } else {
+
+  }
+}
+
 // Setup
 
 const scene = new THREE.Scene();
