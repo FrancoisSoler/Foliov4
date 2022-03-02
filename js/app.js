@@ -1,6 +1,7 @@
 import '../scss/app.scss';
-import * as THREE from 'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.module.js';
+import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.121.1/build/three.module.js";
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.121.1/examples/jsm/loaders/GLTFLoader.js";
 //Animate On Scroll
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -19,7 +20,7 @@ window.addEventListener("DOMContentLoaded", (event) => {
 window.onload=function(){
   var mobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
   if (mobile) {
-      alert("Désolé, ce site n'est pas encore fonctionel sur téléphone");              
+      alert("Ce site offre une meilleure experience sur un écran plus grand :(");              
   } else {
 
   }
@@ -56,15 +57,17 @@ scene.add(torus);
 
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(5, 5, 5);
+const earthLight =  new THREE.PointLight(0xffffff)
+earthLight.position.set(5, 0, 65 )
 
 const ambientLight = new THREE.AmbientLight(0xffffff);
-scene.add(pointLight, ambientLight);
+scene.add(pointLight, ambientLight, /* earthLight */);
 
 // Helpers
 
-// const lightHelper = new THREE.PointLightHelper(pointLight)
-// const gridHelper = new THREE.GridHelper(200, 50);
-// scene.add(lightHelper, gridHelper)
+/*  const lightHelper = new THREE.PointLightHelper(earthLight)
+ const gridHelper = new THREE.GridHelper(200, 50);
+ scene.add(lightHelper, gridHelper) */
 
 // const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -72,7 +75,7 @@ scene.add(pointLight, ambientLight);
 const getRandomParticelPos = (particleCount) => {
   const arr = new Float32Array(particleCount * 2);
   for (let i = 0; i < particleCount; i++) {
-    arr[i] = (Math.random() - 0.5) * 8;
+    arr[i] = (Math.random() - 0.5) * 32;
   }
   return arr;
 };
@@ -82,11 +85,11 @@ function addStar() {
 
   geometrys[0].setAttribute(
     "position",
-    new THREE.BufferAttribute(getRandomParticelPos(150), 3)
+    new THREE.BufferAttribute(getRandomParticelPos(1800), 3)
   );
   geometrys[1].setAttribute(
     "position",
-    new THREE.BufferAttribute(getRandomParticelPos(150), 3)
+    new THREE.BufferAttribute(getRandomParticelPos(1800), 3)
   );
 
   const loader = new THREE.TextureLoader();
@@ -112,7 +115,7 @@ function addStar() {
   ];
 
 
-  const starsT1 = new THREE.Points(geometrys[0], materials[0]);
+  const starsT1 = new THREE.Points(geometrys[1], materials[1]);
   const starsT2 = new THREE.Points(geometrys[1], materials[1]);
 
   /*   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
@@ -133,7 +136,7 @@ Array(200).fill().forEach(addStar);
 
 // Background
 
-const spaceTexture = new THREE.TextureLoader().load('./images/space.jpg');
+const spaceTexture = new THREE.TextureLoader().load('./images/galaxy.jpg');
 scene.background = spaceTexture;
 
 // Avatar
@@ -150,7 +153,7 @@ const moonTexture = new THREE.TextureLoader().load('./images/moon.jpg');
 const normalTexture = new THREE.TextureLoader().load('./images/normal.jpg');
 
 const moon = new THREE.Mesh(
-  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.SphereGeometry(2, 32, 32),
   new THREE.MeshStandardMaterial({
     map: moonTexture,
     normalMap: normalTexture,
@@ -158,8 +161,20 @@ const moon = new THREE.Mesh(
 );
 
 scene.add(moon);
+// low poly earth
+const gltfLoader = new GLTFLoader();
+gltfLoader.load('/3D/earth_low_poly.gltf', (gltf) => {
+/*   gltf.scene.scale.set(1,1,1) */
+/*   gltf.scene.rotation.set(0, 1.7, 0) */
+gltf.scene.position.z = 49;
+gltf.scene.position.setX(-5);
+  scene.add(gltf.scene)
 
-moon.position.z = 48;
+
+})
+
+
+moon.position.z = 24;
 moon.position.setX(-10);
 
 cube.position.z = -6;

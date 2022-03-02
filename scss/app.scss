@@ -1,17 +1,19 @@
-
 /* Fonts */
-@import 'base/fonts';
+@import "base/fonts";
 
 /* Mixins, helpers and functions */
-/* @import 'base/mixins';
- */
+@import "base/mixins";
+
 /* Vendor */
 
-/* Components */
-
+/* Variables */
+@import "base/vars";
 
 // Main SCSS File
-@import 'home.scss';
-@import 'card.scss';
-
-@import 'blockquote.scss';
+@import "home.scss";
+@import "layout/card.scss",
+        "layout/blockquote.scss", 
+         "layout/left",
+        "layout/light",
+        "layout/stuff",
+        "layout/section";

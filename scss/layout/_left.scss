@@ -1,0 +1,29 @@
+.left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    @include for-size(tablet-portrait-up) {
+        width: 100%;
+
+    }
+
+    p {
+        font-family: "ProximaNova-Regular";
+        padding: 0 0.6em 0.5em 0.6em;
+        line-height: 1.6em;
+        width: 90%;
+    }
+}
+
+.left,
+.light {
+    grid-column: 6 / 12;
+    background-image: url("../images/rainbow-vortex.svg");
+    background-repeat: repeat;
+    background-size: cover;
+    //padding: 1rem;
+    border-radius: 1em;
+    outline: 4px solid #ffffff;
+    outline-offset: 6px;
+}

@@ -1,0 +1,36 @@
+.whoami {
+    background-image: url("../images/rainbow-vortex.svg");
+    background-repeat: repeat;
+    background-size: cover;
+    padding: 1rem;
+    border-radius: 1em;
+    outline: 4px solid #ffffff;
+    outline-offset: 6px;
+    width: 80%;
+    @include for-size(tablet-portrait-up) {
+        width: 80%;
+
+    }
+    &__title {
+        margin: 0 auto;
+        width: 100%;
+        @include for-size(tablet-portrait-up) {
+            width: 30%;
+
+        }
+    }
+
+    &__text {
+        font-family: "ProximaNova-Regular";
+        padding: 0.5em;
+        line-height: 1.6em;
+    }
+}
+
+section {
+    grid-column: 2 / 8;
+    //padding: 1rem;
+    font-size: 1.25rem;
+    //line-height: 1.5;
+    margin-bottom: $spacing;
+}

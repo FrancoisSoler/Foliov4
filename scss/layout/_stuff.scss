@@ -1,0 +1,41 @@
+.stuff {
+    @include shadow-bg;
+    height: 90%;
+    &__illustration {
+        width: 100%;
+        height: 100%;
+      display: flex;
+      flex-flow: column nowrap;
+        align-items: center;
+        &__earth{
+            background: url('../../public/images/earth-low-ploy.png');
+            width: 100%;
+            height: 40%;
+            border-radius: 1.5em;
+            background-size: cover;
+            background-position: center;
+            aspect-ratio: 1/1;
+            margin: 1.5em 0;
+
+            p{
+                @include shadow-bg;
+                width: 20%;
+                margin: 2em 0 0 2em;
+            }
+        }
+        &__graveyard {
+            background: url('../../public/images/cimetierev3.png');
+            width: 100%;
+            height: 40%;
+            border-radius: 1.5em;
+            background-size: cover;
+            background-position: center;
+            
+            p{
+                @include shadow-bg;
+                width: 20%;
+                margin: 2em 0 0 2em;
+            }
+        }
+    }
+}
